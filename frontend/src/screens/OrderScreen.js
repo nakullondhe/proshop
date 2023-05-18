@@ -53,7 +53,7 @@ const OrderScreen = ({ match, history }) => {
       const { data: clientId } = await axios.get("/api/config/paypal");
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      script.src = `https://www.paypal.com/sdk/js?client-id=sb`;
       script.async = true;
       script.onload = () => {
         setSdkReady(true);
@@ -78,6 +78,10 @@ const OrderScreen = ({ match, history }) => {
     console.log(paymentResult);
     dispatch(payOrder(orderId, paymentResult));
   };
+  
+  const paymentSuccessTemp = () => {
+    dispatch(payOrder(orderId, {id: Math.floor(Math.random() * 999999) , status: "success", update_time: Date.now(), email_address: userInfo.email}));
+  }
 
   const deliverHandler = () => {
     dispatch(deliverOrder(order));
@@ -202,10 +206,16 @@ const OrderScreen = ({ match, history }) => {
                   {!sdkReady ? (
                     <Loader />
                   ) : (
-                    <PayPalButton
-                      amount={order.totalPrice}
-                      onSuccess={successPaymentHandler}
-                    />
+                    <Button style={{width: '100%', cursor: 'pointer'}} onClick={paymentSuccessTemp} type="submit" variant="primary">
+                    Process Payment
+                  </Button>
+                    // <div onClick={paymentSuccessTemp}>
+                    //   <PayPalButton
+                    //     amount={order.totalPrice}
+                    //     onSuccess={successPaymentHandler}
+                    //     onError={successPaymentHandler}
+                    //   />
+                    // </div>
                   )}
                 </ListGroup.Item>
               )}
