@@ -1,5 +1,4 @@
 # ProShop
-https://proshop-vr1.herokuapp.com/
 
 
 <h2>Features :</h2>
