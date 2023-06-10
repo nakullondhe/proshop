@@ -18,8 +18,10 @@ import UserEditScreen from "./screens/UserEditScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
+import axios from "axios";
 
 const App = () => {
+  axios.defaults.baseURL = 'https://proshop-jf6i.onrender.com';
   return (
     <Router>
       <Header />
