@@ -1,7 +1,7 @@
 import express from "express";
 import mongoSanitize from "express-mongo-sanitize";
 import path from "path";
-var cors = require('cors')
+import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
