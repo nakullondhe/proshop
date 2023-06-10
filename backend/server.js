@@ -18,7 +18,7 @@ connectDB();
 
 const app = express();
 
-var allowedDomains = ['http://yourdomain.com', 'http://localhost:3000'];
+var allowedDomains = ['https://proshopping.web.app', 'http://localhost:3000'];
 app.use(cors({
   origin: function (origin, callback) {
     // bypass the requests with no origin (like curl requests, mobile apps, etc )
